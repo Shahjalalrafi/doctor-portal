@@ -1,0 +1,13 @@
+.info-primary {
+    background: #1cc7c1;
+    color: white;
+}
+
+.info-dark {
+    background: rgb(32, 32, 32);
+    color: white;
+}
+
+.font-icon>* {
+    font-size: 30px;
+}

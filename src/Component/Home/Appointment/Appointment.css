@@ -1,0 +1,21 @@
+.appointment-section {
+    position: relative;
+    width: 100%;
+    background: url('../../../Images/chairbg.png');
+    background-size: cover;
+}
+
+.appointment-section::after {
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 0;
+    width: 100%;
+    background-color: rgb(42, 42, 42);
+    height: 100%;
+    z-index: -5;
+}
+
+.appointment-section  img {
+    transform: translateY(-130px);;
+}
