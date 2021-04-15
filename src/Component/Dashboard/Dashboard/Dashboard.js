@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppointMentList from '../AppoinMentList.js/AppointMentList';
 import Sidebar from '../Sidebar/Sidebar';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { userContext } from '../../../App';
 
 const Dashboard = () => {
 
     const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString())
     const [appointMent, setAppointMent] = useState([])
+    const [logedInUser, setLogedInUser] = useContext(userContext)
 
     const HandleChange = (date) => {
         setSelectedDate(date.toLocaleDateString())
@@ -20,7 +22,7 @@ const Dashboard = () => {
         fetch('http://localhost:5050/appointmentByDate', {
             method:'POST',
             headers: {'content-type': 'application/json'},
-            body: JSON.stringify({date: selectedDate})
+            body: JSON.stringify({date: selectedDate, email: logedInUser.email})
         })
         .then(res => res.json())
         .then(data => setAppointMent(data))

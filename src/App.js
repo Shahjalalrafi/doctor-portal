@@ -12,6 +12,8 @@ import Login from './Component/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './Component/PrivarteRoute/PrivateRoute';
 import Dashboard from './Component/Dashboard/Dashboard/Dashboard';
+import AllPatients from './Component/Dashboard/AllPatients/AllPatients';
+import AddDoctor from './Component/Dashboard/AddDoctor/AddDoctor';
 
 export const userContext = createContext()
 
@@ -30,16 +32,28 @@ function App() {
             <Login />
           </Route>
           
-          <Route path='/appointment'>  
+          <PrivateRoute path='/appointment'>  
             <Appointment />
-          </Route>
+          </PrivateRoute>
+          
+          <PrivateRoute path='/dashboard/patients'>  
+            <AllPatients />
+          </PrivateRoute>
 
-          <Route path='/dashboard'>
+          <PrivateRoute path='/dashboard/add-doctor'>  
+            <AddDoctor />
+          </PrivateRoute>
+
+          <PrivateRoute path='/dashboard'>
             <Dashboard />
-          </Route>
+          </PrivateRoute>
 
           <Route exact path='/'>  
             <Home />
+          </Route>
+          
+          <Route path='*'>  
+            <h2>page not found!!</h2>
           </Route>
 
         </Switch>

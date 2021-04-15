@@ -14,8 +14,8 @@ const Navbar = () => {
                             <Link to='/home'>
                                 <li class="nav-item me-4 nav-link text-dark">Home</li>
                             </Link>
-                            <Link to='/about'>
-                                <li class="nav-item me-4 nav-link text-dark">About</li>
+                            <Link to='/dashboard'>
+                                <li class="nav-item me-4 nav-link text-dark">Dashboard</li>
                             </Link>
                             <Link to='/dental-services'>
                                 <li class="nav-item me-4 nav-link text-dark">Dental Services</li>

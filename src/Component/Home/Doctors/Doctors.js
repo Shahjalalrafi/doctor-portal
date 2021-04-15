@@ -1,25 +1,27 @@
-import React from 'react';
-import doctor from '../../../Images/doctor.png'
+import React, { useEffect, useState } from 'react';
+// import doctor from '../../../Images/doctor.png'
+import Doctor from '../Doctor/Doctor';
 
 const Doctors = () => {
+    const [doctors, setDoctors] = useState([])
+    
+    useEffect(() => {
+        fetch('http://localhost:5050/doctors')
+        .then(res => res.json())
+        .then(data => setDoctors(data))
+    },[])
     return (
-        <div className='row'>
-            <div className='col-4'>
-                <img className='img-fluid' src={doctor} alt="" />
-                <h6>Name: jogn smith</h6>
-                <p>+9237999374</p>
+        <section className='doctors'>
+            <div className="container">
+                <h5 className="text-center  text-primary mb-5">Our Doctors</h5>
+                <div className="row">
+                    {
+                     doctors.map(doctor =><Doctor key={doctor._id} doctor={doctor} />)
+                    }
+                    
+                </div>
             </div>
-            <div className='col-4'>
-                <img className='img-fluid' src={doctor} alt="" />
-                <h6>Name: jogn smith</h6>
-                <p>+9237999374</p>
-            </div>
-            <div className='col-4'>
-                <img className='img-fluid' src={doctor} alt="" />
-                <h6>Name: jogn smith</h6>
-                <p>+9237999374</p>
-            </div>
-        </div>
+        </section>
     );
 };
 
